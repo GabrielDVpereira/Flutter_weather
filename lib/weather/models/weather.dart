@@ -6,11 +6,11 @@ import 'package:weather_repository/weather_repository.dart'
 
 part 'weather.g.dart';
 
-enum TempetureUnits { fahrenheit, celsius }
+enum TemperatureUnits { fahrenheit, celsius }
 
-extension TemperatureUnitsX on TempetureUnits {
-  bool get isFahrenheit => this == TempetureUnits.fahrenheit;
-  bool get isCelsius => this == TempetureUnits.celsius;
+extension TemperatureUnitsX on TemperatureUnits {
+  bool get isFahrenheit => this == TemperatureUnits.fahrenheit;
+  bool get isCelsius => this == TemperatureUnits.celsius;
 }
 
 @JsonSerializable()
@@ -75,4 +75,6 @@ class Weather extends Equatable {
       temperature: temperature ?? this.temperature,
     );
   }
+
+  Map<String, dynamic> toJson() => _$WeatherToJson(this);
 }
