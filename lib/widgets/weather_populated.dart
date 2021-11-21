@@ -22,34 +22,35 @@ class WeatherPopulated extends StatelessWidget {
       children: [
         _WeatherBackground(),
         RefreshIndicator(
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              clipBehavior: Clip.none,
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 48,
-                    ),
-                    _WeatherIcon(condition: weather.condition),
-                    Text(
-                      weather.location,
-                      style: theme.textTheme.headline2
-                          ?.copyWith(fontWeight: FontWeight.w200),
-                    ),
-                    Text(
-                      weather.formattedTemperature(units),
-                      style: theme.textTheme.headline3
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                        '''Last Updated at ${TimeOfDay.fromDateTime(weather.lastUpdated).format(context)}''')
-                  ],
-                ),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            clipBehavior: Clip.none,
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  _WeatherIcon(condition: weather.condition),
+                  Text(
+                    weather.location,
+                    style: theme.textTheme.headline2
+                        ?.copyWith(fontWeight: FontWeight.w200),
+                  ),
+                  Text(
+                    weather.formattedTemperature(units),
+                    style: theme.textTheme.headline3
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                      '''Last Updated at ${TimeOfDay.fromDateTime(weather.lastUpdated).format(context)}''')
+                ],
               ),
             ),
-            onRefresh: onRefresh)
+          ),
+          onRefresh: onRefresh,
+        )
       ],
     );
   }
