@@ -69,7 +69,9 @@ class WeatherView extends StatelessWidget {
         child: const Icon(Icons.search),
         onPressed: () async {
           final city = await Navigator.of(context).push(SearchPage.route());
-          await context.read<WeatherCubit>().fetchWeather(city as String);
+          if (city != null) {
+            await context.read<WeatherCubit>().fetchWeather(city);
+          }
         },
       ),
     );
